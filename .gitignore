@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Streamlit
+# (config.toml IS committed intentionally -- it's the theme config,
+# not a generated artifact. Only secrets should ever be ignored here.)
+.streamlit/secrets.toml
+
+# Benchmark output -- regenerated automatically at runtime
+# (see scripts/experiment_utils.py's RESULTS_ROOT.mkdir), so none of
+# it needs to be version-controlled: charts, PDFs, and per-experiment
+# JSON results can all be large and are fully reproducible by re-running
+# a benchmark.
+results/
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
