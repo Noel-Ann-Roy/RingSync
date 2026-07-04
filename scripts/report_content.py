@@ -1,14 +1,3 @@
-"""
-Shared report content logic: summary statistics and auto-generated
-insights, computed from benchmark_results.json.
-
-Extracted into its own module so the Streamlit dashboard and the PDF
-report exporter (report_export.py) compute IDENTICAL numbers and
-insights from the same data -- there is exactly one implementation of
-"what counts as the best speedup" or "when did RingSync become
-advantageous," not two copies that could silently drift apart.
-"""
-
 
 def compute_summary_stats(data: dict) -> dict:
     """
@@ -43,9 +32,7 @@ def compute_summary_stats(data: dict) -> dict:
             best_speedup = best[speedup_key]
             best_speedup_ws = best["world_size"]
 
-            # Reported at the SAME world_size deliberately -- speedup and
-            # efficiency "at max workers" describe one real configuration,
-            # not two different cherry-picked rows of the results table.
+          
             speedup_at_max_workers = max_workers_result.get(speedup_key)
             efficiency_at_max_workers = max_workers_result.get(eff_key)
 

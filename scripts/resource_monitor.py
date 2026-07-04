@@ -12,20 +12,6 @@ import psutil
 
 
 class ProcessTreeMonitor:
-    """
-    Stateful CPU% tracking across repeated samples of a process tree.
-
-    psutil's cpu_percent(interval=None) measures CPU time elapsed since
-    the PREVIOUS call MADE ON THAT SAME Process OBJECT INSTANCE -- the
-    tracking state lives on the object, not on the OS-level PID. Two
-    separate psutil.Process(pid) calls for the identical pid do NOT
-    share state; each starts fresh. That means naively re-creating
-    Process objects every sample (e.g. `psutil.Process(pid)` inside a
-    sample() method) silently resets the timer every single call and
-    permanently reads 0%, even under real load. This class caches the
-    actual Process object per pid across calls so cpu_percent's
-    internal state correctly accumulates between samples.
-    """
 
     def __init__(self):
         self._processes: dict = {}  # pid -> psutil.Process, reused across calls
@@ -61,9 +47,6 @@ class ProcessTreeMonitor:
             except (psutil.NoSuchProcess, psutil.AccessDenied):
                 continue
 
-        # Drop cached objects for pids that no longer exist in this
-        # sample, so the dict doesn't grow unboundedly over a long run
-        # as short-lived worker processes come and go.
         self._processes = {pid: p for pid, p in self._processes.items() if pid in current_pids}
 
         try:
@@ -85,8 +68,7 @@ def sample_network_io() -> dict:
     RingSync's actual traffic is loopback-only (127.0.0.1 between
     workers), and loopback interface naming isn't reliably consistent
     across platforms (especially Windows), so this reports total system
-    network I/O with an honest label rather than pretending to isolate
-    RingSync's specific traffic.
+    network I/O.
     """
     try:
         counters = psutil.net_io_counters()

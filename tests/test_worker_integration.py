@@ -8,9 +8,6 @@ initialized model, so after training, every worker's final model
 weights should be numerically identical -- despite each worker having
 trained on a *different* slice of data.
 
-This is a heavier, slower test than the pure-algorithm unit tests
-(it spins up real processes and sockets), so it's kept separate and run
-explicitly rather than as part of the fast unit test suite.
 
 Run: PYTHONPATH=. python3 tests/test_worker_integration.py
 """

@@ -1,18 +1,3 @@
-# RingSync's theme: BOTH light and dark palettes defined in one file,
-# via separate [theme.light] and [theme.dark] sections. This is
-# Streamlit's own supported dual-theme mechanism (confirmed working
-# via direct inspection of streamlit.config's resolved values) -- it
-# lets Streamlit's native theme picker (top-right "⋮" menu -> Settings
-# -> Theme) switch between "Light" and "Dark" using these exact custom
-# colors, rather than falling back to Streamlit's generic defaults.
-#
-# Colors: primaryColor is the midpoint of the RingSync logo's actual
-# blue-to-violet gradient (#4f46e5 for light; the SAME hue, darkened
-# ~18%, for dark -- not a different color, per design preference).
-# Background/text follow standard UI practice: near-white/near-black
-# (not pure white/black), and dark-slate/light-gray text (not pure
-# black/white), both easier on the eyes than full contrast extremes.
-
 [theme.light]
 primaryColor = "#4f46e5"
 backgroundColor = "#fafafa"

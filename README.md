@@ -304,7 +304,7 @@ RingSync/
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/RingSync.git
+git clone https://github.com/Noel-Ann-Roy/RingSync.git 
 cd RingSync
 
 # Create and activate a virtual environment

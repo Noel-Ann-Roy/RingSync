@@ -20,13 +20,7 @@ import torch
 
 
 def _detect_windows_version(release: str) -> str:
-    """
-    Windows 11 shares the same kernel version string ("10") as Windows
-    10 in many of Python's platform APIs -- Microsoft did not bump the
-    major kernel version, so distinguishing them requires checking the
-    build number rather than trusting platform.release() alone. Builds
-    22000+ are Windows 11.
-    """
+   
     if platform.system() != "Windows":
         return release
 
@@ -40,14 +34,7 @@ def _detect_windows_version(release: str) -> str:
 
 
 def get_system_info() -> dict:
-    """
-    Returns a dict of system information, all fields as plain strings
-    ready for display. Every field is wrapped in its own try/except --
-    hardware detection is inherently a bit environment-dependent (e.g.
-    py-cpuinfo can occasionally fail on unusual CPUs, some virtualized
-    environments hide physical core counts), so one failed field
-    degrades to "Unknown" rather than crashing the whole panel.
-    """
+   
     info = {}
 
     try:

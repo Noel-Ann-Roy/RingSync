@@ -25,11 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 INPUT_PATH = ROOT / "assets" / "logo.png"
 OUTPUT_PATH = ROOT / "assets" / "logo_transparent.png"
 
-# Pixels where R, G, and B are ALL at or above this value are treated
-# as "background" and made transparent. 235-245 is a good starting
-# range for a clean white/near-white background; lower it if some
-# white background remains, raise it if parts of the logo itself
-# start disappearing (e.g. white highlights within the design).
+
 WHITE_THRESHOLD = 240
 
 
